@@ -8,6 +8,4 @@ RUN yum clean all \
     && yum -y install epel-release \
     && yum -y install ansible
 
-COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["sh"]

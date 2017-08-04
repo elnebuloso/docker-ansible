@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [1.1.0] - 2017-08-04
+### Changed
+- Removed docker-entrypoint.sh, unnecessary
+
+
+## [1.1.0] - 2017-08-04
 ### Added
 - Added docker-entrypoint.sh
 - Added Centos7 Support
