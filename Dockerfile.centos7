@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:centos7
 MAINTAINER jeff.tunessen@gmail.com
 
 ENV TERM linux
@@ -6,6 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN yum clean all \
     && yum -y install epel-release \
-    && yum -y install ansible
+    && yum -y install ansible \
+    && yum autoremove \
+    && yum clean all \
 
 CMD ["sh"]
