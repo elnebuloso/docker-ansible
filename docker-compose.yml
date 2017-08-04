@@ -5,8 +5,19 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.ubuntu14
+    volumes:
+      - ./demo-role:/etc/ansible/roles/demo-role
 
   ubuntu16:
     build:
       context: .
       dockerfile: Dockerfile.ubuntu16
+    volumes:
+      - ./demo-role:/etc/ansible/roles/demo-role
+
+  centos7:
+    build:
+      context: .
+      dockerfile: Dockerfile.centos7
+    volumes:
+      - ./demo-role:/etc/ansible/roles/demo-role

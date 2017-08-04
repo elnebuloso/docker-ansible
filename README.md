@@ -3,44 +3,44 @@
 [![Docker Build Statu](https://img.shields.io/docker/build/elnebuloso/ansible.svg)](https://hub.docker.com/r/elnebuloso/ansible/builds/)
 
 
+## Ansible Version
+
+- ubuntu14 - ansible `2.3.1.0`
+- ubuntu16 - ansible `2.3.1.0`
+- centos7 - ansible `2.3.1.0`
+
+
 ## Supported tags and respective `Dockerfile` links
 
 - [`ubuntu14` (Dockerfile.ubuntu14)](https://github.com/elnebuloso/docker-ansible/blob/master/Dockerfile.ubuntu14)
 - [`ubuntu16` (Dockerfile.ubuntu16)](https://github.com/elnebuloso/docker-ansible/blob/master/Dockerfile.ubuntu16)
-
-
-## Containers
-
 - https://hub.docker.com/r/elnebuloso/ansible/tags/
 
 
-### ubuntu14
+## Development
 
-- elnebuloso/ansible:ubuntu14-latest
-- elnebuloso/ansible:ubuntu14-`[version]`
-
-
-### ubuntu16
-
-- elnebuloso/ansible:ubuntu16-latest
-- elnebuloso/ansible:ubuntu16-`[version]`
-
-
-## Developing this Container
-
-
-### start and build containers
+### build containers
 
 ```text
 docker-compose up --build -d
-docker-compose up --build -d ubuntu14
-docker-compose up --build -d ubuntu16
 ```
 
-
-### exec into running containers
+### test containers
 
 ```text
-docker-compose exec ubuntu14 bash
-docker-compose exec ubuntu16 bash
+docker-compose run ubuntu14
+docker-compose run ubuntu14 ansible --version
+docker-compose run ubuntu14 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
+```
+
+```text
+docker-compose run ubuntu16
+docker-compose run ubuntu16 ansible --version
+docker-compose run ubuntu16 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
+```
+
+```text
+docker-compose run centos7
+docker-compose run centos7 ansible --version
+docker-compose run centos7 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
 ```
