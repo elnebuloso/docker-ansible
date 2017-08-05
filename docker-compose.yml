@@ -15,6 +15,13 @@ services:
     volumes:
       - ./demo-role:/etc/ansible/roles/demo-role
 
+  centos6:
+    build:
+      context: .
+      dockerfile: Dockerfile.centos6
+    volumes:
+      - ./demo-role:/etc/ansible/roles/demo-role
+
   centos7:
     build:
       context: .

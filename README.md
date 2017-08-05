@@ -39,6 +39,12 @@ docker-compose run ubuntu16 ansible-playbook -i 'localhost,' -c local /etc/ansib
 ```
 
 ```text
+docker-compose run centos6
+docker-compose run centos6 ansible --version
+docker-compose run centos6 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
+```
+
+```text
 docker-compose run centos7
 docker-compose run centos7 ansible --version
 docker-compose run centos7 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
