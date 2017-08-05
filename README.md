@@ -27,25 +27,25 @@ docker-compose up --build -d
 ### test containers
 
 ```text
-docker-compose run ubuntu14
-docker-compose run ubuntu14 ansible --version
-docker-compose run ubuntu14 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
+docker-compose exec ubuntu14
+docker-compose exec ubuntu14 ansible --version
+docker-compose exec ubuntu14 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
 ```
 
 ```text
-docker-compose run ubuntu16
-docker-compose run ubuntu16 ansible --version
-docker-compose run ubuntu16 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
+docker-compose exec ubuntu16
+docker-compose exec ubuntu16 ansible --version
+docker-compose exec ubuntu16 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
 ```
 
 ```text
-docker-compose run centos6
-docker-compose run centos6 ansible --version
-docker-compose run centos6 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
+docker-compose exec centos6
+docker-compose exec centos6 ansible --version
+docker-compose exec centos6 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
 ```
 
 ```text
-docker-compose run centos7
-docker-compose run centos7 ansible --version
-docker-compose run centos7 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
+docker-compose exec centos7
+docker-compose exec centos7 ansible --version
+docker-compose exec centos7 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
 ```

@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [1.2.0] - 2017-08-05
+### Changed
+- CMD ["tail", "-f", "/dev/null"] for running container for testing ansible provisioning
+
+
 ## [1.1.0] - 2017-08-05
 ### Changed
 - Added Centos6 Support

@@ -9,4 +9,5 @@ RUN yum clean all \
     && yum -y install ansible \
     && yum clean all
 
-CMD ["sh"]
+# sleep infinity, use container as running system you can bash in
+CMD ["tail", "-f", "/dev/null"]
