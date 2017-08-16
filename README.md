@@ -6,8 +6,11 @@ The Main Purpose of this Container is for Developing and Testing Ansible Roles
 
 ## Ansible Version
 
-- ubuntu14 - ansible `2.3.1.0`
-- ubuntu16 - ansible `2.3.1.0`
+- ubuntu14 - ansible `2.3.2.0`
+- ubuntu16 - ansible `2.3.2.0`
+- debian7 - ansible `2.3.2.0`
+- debian8 - ansible `2.3.2.0`
+- centos6 - ansible `2.3.1.0`
 - centos7 - ansible `2.3.1.0`
 
 ## Supported tags and respective `Dockerfile` links
@@ -36,6 +39,18 @@ docker-compose exec ubuntu14 ansible-playbook -i 'localhost,' -c local /etc/ansi
 docker-compose exec ubuntu16
 docker-compose exec ubuntu16 ansible --version
 docker-compose exec ubuntu16 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
+```
+
+```text
+docker-compose exec debian7
+docker-compose exec debian7 ansible --version
+docker-compose exec debian7 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
+```
+
+```text
+docker-compose exec debian8
+docker-compose exec debian8 ansible --version
+docker-compose exec debian8 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
 ```
 
 ```text

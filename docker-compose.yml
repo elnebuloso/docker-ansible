@@ -15,6 +15,20 @@ services:
     volumes:
       - ./demo-role:/etc/ansible/roles/demo-role
 
+  debian7:
+    build:
+      context: .
+      dockerfile: Dockerfile.debian7
+    volumes:
+      - ./demo-role:/etc/ansible/roles/demo-role
+
+  debian8:
+    build:
+      context: .
+      dockerfile: Dockerfile.debian8
+    volumes:
+      - ./demo-role:/etc/ansible/roles/demo-role
+
   centos6:
     build:
       context: .
