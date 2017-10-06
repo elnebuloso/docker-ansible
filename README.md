@@ -6,12 +6,12 @@ The Main Purpose of this Container is for Developing and Testing Ansible Roles
 
 ## Ansible Version
 
-- ubuntu14 - ansible `2.3.2.0`
-- ubuntu16 - ansible `2.3.2.0`
-- debian7 - ansible `2.3.2.0`
-- debian8 - ansible `2.3.2.0`
-- centos6 - ansible `2.3.1.0`
-- centos7 - ansible `2.3.1.0`
+- ubuntu14 - ansible `2.4.0.0`
+- ubuntu16 - ansible `2.4.0.0`
+- debian7 - ansible `2.4.0.0`
+- debian8 - ansible `2.4.0.0`
+- centos6 - ansible `2.3.2.0`
+- centos7 - ansible `2.3.2.0`
 
 ## Supported tags and respective `Dockerfile` links
 
