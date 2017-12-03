@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [1.5.0] - 2017-12-03
+### Changed
+- ubuntu14 - ansible `2.4.2.0`
+- ubuntu16 - ansible `2.4.2.0`
+
+
 ## [1.4.0] - 2017-10-06
 ### Changed
 - ubuntu14 - ansible `2.4.0.0`
