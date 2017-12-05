@@ -20,7 +20,7 @@ case "$1" in
         docker-compose exec ubuntu16 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
     ;;
 
-    create-images)
+    create)
         docker build --pull -t ansible-ubuntu14-latest -f Dockerfile.ubuntu14 .
         docker build --pull -t ansible-ubuntu16-latest -f Dockerfile.ubuntu16 .
 
@@ -28,7 +28,7 @@ case "$1" in
         docker run ansible-ubuntu16-latest ansible --version
     ;;
 
-    push-images)
+    push)
         docker tag ansible-ubuntu14-latest elnebuloso/ansible:2.4.2.0-ubuntu14
         docker tag ansible-ubuntu14-latest elnebuloso/ansible:2.4-ubuntu14
         docker tag ansible-ubuntu14-latest elnebuloso/ansible:2-ubuntu14
@@ -51,12 +51,12 @@ case "$1" in
     *)
         clear
         echo ""
-        echo " Commands"
-        echo ""
-        echo " - start           Start all containers"
-        echo " - start.ubuntu14  Start Ubuntu 14.04 container"
-        echo " - start.ubuntu16  Start Ubuntu 16.04 container"
-        echo " - stop            Stop all containers"
+        echo "- start           Start all containers"
+        echo "- start.ubuntu14  Start Ubuntu 14.04 container"
+        echo "- start.ubuntu16  Start Ubuntu 16.04 container"
+        echo "- stop            Stop all containers"
+        echo "- create          Create Images"
+        echo "- push            Push Images"
         echo ""
     ;;
 esac
