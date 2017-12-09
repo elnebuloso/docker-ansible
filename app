@@ -113,6 +113,10 @@ case "$1" in
         clear
         echo ""
         echo "- start           Start all containers"
+        echo "- start.centos7   Start Centos 7 container"
+        echo "- start.debian8   Start Debian 8 container"
+        echo "- start.ubuntu14  Start Ubuntu 14.04 container"
+        echo "- start.ubuntu16  Start Ubuntu 16.04 container"
         echo "- stop            Stop all containers"
         echo "- create          Create Images"
         echo "- push            Push Images"
