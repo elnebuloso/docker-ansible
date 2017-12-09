@@ -1,3 +1,6 @@
 ---
 - debug:
     msg: "container os: {{ container_os }}"
+
+- debug:
+    msg: "ansible version: {{ ansible_version }}"

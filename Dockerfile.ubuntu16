@@ -22,5 +22,4 @@ RUN apt-get update \
     && rm -rf /usr/share/locale/* \
     && rm -rf /tmp/*
 
-# sleep infinity, use container as running system you can bash in
-CMD ["tail", "-f", "/dev/null"]
+CMD ["sh"]

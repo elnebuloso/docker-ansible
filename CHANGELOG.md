@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [1.7.0] - 2017-12-09
+### Changed
+- supporting centos7
+- supporting debian8
+
+
 ## [1.6.0] - 2017-12-04
 ### Changed
 - docker hub tagging changed
