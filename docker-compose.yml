@@ -1,10 +1,24 @@
 version: "2"
 
 services:
+  centos6:
+    build:
+      context: .
+      dockerfile: Dockerfile.centos6
+    volumes:
+      - ./demo-role:/etc/ansible/roles/demo-role
+
   centos7:
     build:
       context: .
       dockerfile: Dockerfile.centos7
+    volumes:
+      - ./demo-role:/etc/ansible/roles/demo-role
+
+  debian7:
+    build:
+      context: .
+      dockerfile: Dockerfile.debian7
     volumes:
       - ./demo-role:/etc/ansible/roles/demo-role
 

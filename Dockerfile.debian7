@@ -1,14 +1,13 @@
-FROM ubuntu:14.04
+FROM debian:7
 MAINTAINER jeff.tunessen@gmail.com
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        software-properties-common \
-        ca-certificates \
-    && add-apt-repository ppa:ansible/ansible \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends \
-        ansible \
+        build-essential \
+        libffi-dev \
+        libssl-dev \
+        python-pip \
+        python-dev \
     && apt-get -y autoremove \
     && apt-get -y clean \
     && rm -rf /var/cache/apt/archives/* \
@@ -18,6 +17,13 @@ RUN apt-get update \
     && rm -rf /usr/share/man/* \
     && rm -rf /usr/share/locale/* \
     && rm -rf /tmp/*
+
+# upgrade pip to latest
+RUN pip install -i https://pypi.python.org/simple/ -U pip \
+    && ln -fs /usr/local/bin/pip /usr/bin/pip
+
+# install ansible through pip
+RUN pip install ansible cryptography
 
 # sleep infinity, use container as running system for testing ansible roles
 CMD ["tail", "-f", "/dev/null"]

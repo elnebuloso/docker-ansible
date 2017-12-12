@@ -1,15 +1,13 @@
 FROM debian:8
 MAINTAINER jeff.tunessen@gmail.com
 
-ENV TERM linux
-ENV DEBIAN_FRONTEND noninteractive
-
 RUN apt-get update \
-    && echo 'deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main' >>  /etc/apt/sources.list \
-    && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367 \
-    && apt-get update \
     && apt-get install -y --no-install-recommends \
-        ansible \
+        build-essential \
+        libffi-dev \
+        libssl-dev \
+        python-pip \
+        python-dev \
     && apt-get -y autoremove \
     && apt-get -y clean \
     && rm -rf /var/cache/apt/archives/* \
@@ -20,4 +18,12 @@ RUN apt-get update \
     && rm -rf /usr/share/locale/* \
     && rm -rf /tmp/*
 
-CMD ["sh"]
+# upgrade pip to latest
+RUN pip install -i https://pypi.python.org/simple/ -U pip \
+    && ln -fs /usr/local/bin/pip /usr/bin/pip
+
+# install ansible through pip
+RUN pip install ansible cryptography
+
+# sleep infinity, use container as running system for testing ansible roles
+CMD ["tail", "-f", "/dev/null"]
