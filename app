@@ -10,42 +10,42 @@ case "$1" in
 
     start.centos6)
         docker-compose pull
-        docker-compose up --build --remove-orphans -d centos6
+        docker-compose up --build --remove-orphans --force-recreate -d centos6
         docker-compose exec centos6 ansible --version | grep -Po "^ansible (\d+\.)+\d+" | sed 's!ansible !!g'
         docker-compose exec centos6 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
     ;;
 
     start.centos7)
         docker-compose pull
-        docker-compose up --build --remove-orphans -d centos7
+        docker-compose up --build --remove-orphans --force-recreate -d centos7
         docker-compose exec centos7 ansible --version | grep -Po "^ansible (\d+\.)+\d+" | sed 's!ansible !!g'
         docker-compose exec centos7 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
     ;;
 
     start.debian7)
         docker-compose pull
-        docker-compose up --build --remove-orphans -d debian7
+        docker-compose up --build --remove-orphans --force-recreate -d debian7
         docker-compose exec debian7 ansible --version | grep -Po "^ansible (\d+\.)+\d+" | sed 's!ansible !!g'
         docker-compose exec debian7 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
     ;;
 
     start.debian8)
         docker-compose pull
-        docker-compose up --build --remove-orphans -d debian8
+        docker-compose up --build --remove-orphans --force-recreate -d debian8
         docker-compose exec debian8 ansible --version | grep -Po "^ansible (\d+\.)+\d+" | sed 's!ansible !!g'
         docker-compose exec debian8 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
     ;;
 
     start.ubuntu14)
         docker-compose pull
-        docker-compose up --build --remove-orphans -d ubuntu14
+        docker-compose up --build --remove-orphans --force-recreate -d ubuntu14
         docker-compose exec ubuntu14 ansible --version | grep -Po "^ansible (\d+\.)+\d+" | sed 's!ansible !!g'
         docker-compose exec ubuntu14 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
     ;;
 
     start.ubuntu16)
         docker-compose pull
-        docker-compose up --build --remove-orphans -d ubuntu16
+        docker-compose up --build --remove-orphans --force-recreate -d ubuntu16
         docker-compose exec ubuntu16 ansible --version | grep -Po "^ansible (\d+\.)+\d+" | sed 's!ansible !!g'
         docker-compose exec ubuntu16 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
     ;;

@@ -1,12 +1,15 @@
 FROM debian:8
 MAINTAINER jeff.tunessen@gmail.com
 
-RUN apt-get update \
+ENV TERM linux
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN echo "install essentials" \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
         build-essential \
         libffi-dev \
         libssl-dev \
-        python-pip \
         python-dev \
     && apt-get -y autoremove \
     && apt-get -y clean \
@@ -19,11 +22,10 @@ RUN apt-get update \
     && rm -rf /tmp/*
 
 # upgrade pip to latest
-RUN pip install -i https://pypi.python.org/simple/ -U pip \
-    && ln -fs /usr/local/bin/pip /usr/bin/pip
+ADD https://bootstrap.pypa.io/get-pip.py get-pip.py
+RUN python get-pip.py
 
-# install ansible through pip
-RUN pip install ansible cryptography
+RUN pip install ansible
 
 # sleep infinity, use container as running system for testing ansible roles
 CMD ["tail", "-f", "/dev/null"]
