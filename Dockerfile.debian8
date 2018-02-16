@@ -11,6 +11,8 @@ RUN echo "install essentials" \
         libffi-dev \
         libssl-dev \
         python-dev \
+        libpcre3 \
+        libpcre3-dev \
     && apt-get -y autoremove \
     && apt-get -y clean \
     && rm -rf /var/cache/apt/archives/* \
