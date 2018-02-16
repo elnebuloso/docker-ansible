@@ -11,7 +11,7 @@ case "$1" in
     start.centos6)
         docker-compose pull
         docker-compose up --build --remove-orphans -d centos6
-        docker-compose exec centos6 ansible --version
+        docker-compose exec centos6 ansible --version | grep -Po "(\d+\.)+\d+
         docker-compose exec centos6 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
     ;;
 
@@ -46,7 +46,7 @@ case "$1" in
     start.ubuntu16)
         docker-compose pull
         docker-compose up --build --remove-orphans -d ubuntu16
-        docker-compose exec ubuntu16 ansible --version
+        docker-compose exec ubuntu16 ansible --versionn | grep -Po "(\d+\.)+\d+
         docker-compose exec ubuntu16 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
     ;;
 
