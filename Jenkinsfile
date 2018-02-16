@@ -35,21 +35,23 @@ pipeline {
  * @return map
  */
 def semver(version) {
-    def parser = /(?<major>\d+).(?<minor>\d+).(?<revision>\d+)/
+    def parser = /(?<major>\d+).(?<minor>\d+).(?<revision>\d+).(?<bugfix>\d+)/
     def match = (version =~ parser)
 
     if(match.matches()) {
         def major = match[0][1]
         def minor = match[0][2]
         def revision = match[0][3]
+        def bugfix = match[0][4]
 
         def tag_major = "${major}"
         def tag_minor = "${major}.${minor}"
         def tag_revision = "${major}.${minor}.${revision}"
+        def tag_bugfix = "${major}.${minor}.${revision}.${bugfix}"
 
         match = null
 
-        def map = [tag_major: tag_major, tag_minor: tag_minor, tag_revision: tag_revision]
+        def map = [tag_major: tag_major, tag_minor: tag_minor, tag_revision: tag_revision, tag_bugfix: tag_bugfix]
 
         return map
     }
