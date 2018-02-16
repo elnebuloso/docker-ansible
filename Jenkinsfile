@@ -2,10 +2,79 @@ pipeline {
     agent any
 
 	stages {
+        stage('build debian7') {
+            steps {
+                script {
+                    os = "debian7"
+
+                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm -f Dockerfile.${os} .")
+
+                    image.inside() {
+                        ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
+                    }
+
+                    semver = semver(ansible_version)
+
+                    docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
+                        image.push("${semver.get('tag_bugfix')}-${os}")
+                        image.push("${semver.get('tag_revision')}-${os}")
+                        image.push("${semver.get('tag_minor')}-${os}")
+                        image.push("${semver.get('tag_major')}-${os}")
+                    }
+                }
+            }
+        }
+
+        stage('build debian8') {
+            steps {
+                script {
+                    os = "debian8"
+
+                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm -f Dockerfile.${os} .")
+
+                    image.inside() {
+                        ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
+                    }
+
+                    semver = semver(ansible_version)
+
+                    docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
+                        image.push("${semver.get('tag_bugfix')}-${os}")
+                        image.push("${semver.get('tag_revision')}-${os}")
+                        image.push("${semver.get('tag_minor')}-${os}")
+                        image.push("${semver.get('tag_major')}-${os}")
+                    }
+                }
+            }
+        }
+
         stage('build ubuntu14') {
             steps {
                 script {
                     os = "ubuntu14"
+
+                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm -f Dockerfile.${os} .")
+
+                    image.inside() {
+                        ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
+                    }
+
+                    semver = semver(ansible_version)
+
+                    docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
+                        image.push("${semver.get('tag_bugfix')}-${os}")
+                        image.push("${semver.get('tag_revision')}-${os}")
+                        image.push("${semver.get('tag_minor')}-${os}")
+                        image.push("${semver.get('tag_major')}-${os}")
+                    }
+                }
+            }
+        }
+
+        stage('build ubuntu16') {
+            steps {
+                script {
+                    os = "ubuntu16"
 
                     image = docker.build("elnebuloso/ansible:${os}", "--pull --rm -f Dockerfile.${os} .")
 
