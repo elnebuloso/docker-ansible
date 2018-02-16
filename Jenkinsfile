@@ -15,9 +15,12 @@ pipeline {
 
                     semver = semver(ansible_version)
 
-                    echo "${semver.get('tag_revision')}-${os}"
-                    echo "${semver.get('tag_minor')}-${os}"
-                    echo "${semver.get('tag_major')}-${os}"
+                    docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
+                        image.push("${semver.get('tag_bugfix')}-${os}")
+                        image.push("${semver.get('tag_revision')}-${os}")
+                        image.push("${semver.get('tag_minor')}-${os}")
+                        image.push("${semver.get('tag_major')}-${os}")
+                    }
                 }
             }
         }
