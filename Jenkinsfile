@@ -7,7 +7,7 @@ pipeline {
                 script {
                     os = "centos6"
 
-                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm -f Dockerfile.${os} .")
+                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
 
                     image.inside() {
                         ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
@@ -30,7 +30,7 @@ pipeline {
                 script {
                     os = "centos7"
 
-                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm -f Dockerfile.${os} .")
+                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
 
                     image.inside() {
                         ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
@@ -53,7 +53,7 @@ pipeline {
                 script {
                     os = "debian7"
 
-                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm -f Dockerfile.${os} .")
+                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
 
                     image.inside() {
                         ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
@@ -76,7 +76,7 @@ pipeline {
                 script {
                     os = "debian8"
 
-                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm -f Dockerfile.${os} .")
+                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
 
                     image.inside() {
                         ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
@@ -99,7 +99,7 @@ pipeline {
                 script {
                     os = "ubuntu14"
 
-                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm -f Dockerfile.${os} .")
+                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
 
                     image.inside() {
                         ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
@@ -122,7 +122,7 @@ pipeline {
                 script {
                     os = "ubuntu16"
 
-                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm -f Dockerfile.${os} .")
+                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
 
                     image.inside() {
                         ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()

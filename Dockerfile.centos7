@@ -1,13 +1,6 @@
 FROM centos:centos7
 MAINTAINER jeff.tunessen@gmail.com
 
-#ADD http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm /tmp/epel-release.rpm
-
-#RUN rpm -ivh /tmp/epel-release.rpm \
-#    && yum repolist \
-#    && yum -y install ansible \
-#    && yum clean all
-
 RUN yum -y install epel-release \
     && yum repolist \
     && yum -y install ansible \
