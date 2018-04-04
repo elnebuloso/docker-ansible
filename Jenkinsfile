@@ -147,6 +147,8 @@ pipeline {
  * @return map
  */
 def semver(version) {
+    println "${version}"
+
     def versionParts = version.tokenize('.')
 
     if (versionParts.size < 3) {
