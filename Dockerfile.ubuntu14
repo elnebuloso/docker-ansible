@@ -4,14 +4,12 @@ MAINTAINER jeff.tunessen@gmail.com
 ENV TERM linux
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        software-properties-common \
-        ca-certificates \
+RUN echo "install ansible" \
+    && apt-get update \
+    && apt-get install -y software-properties-common ca-certificates \
     && add-apt-repository ppa:ansible/ansible \
     && apt-get update \
-    && apt-get install -y --no-install-recommends \
-        ansible \
+    && apt-get install -y ansible \
     && apt-get -y autoremove \
     && apt-get -y clean \
     && rm -rf /var/cache/apt/archives/* \

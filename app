@@ -2,7 +2,9 @@
 
 case "$1" in
     start)
+        sh ./app start.centos6
         sh ./app start.centos7
+        sh ./app start.debian7
         sh ./app start.debian8
         sh ./app start.ubuntu14
         sh ./app start.ubuntu16

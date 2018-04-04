@@ -1,7 +1,8 @@
 FROM centos:centos6
 MAINTAINER jeff.tunessen@gmail.com
 
-RUN yum -y install epel-release \
+RUN echo "install ansible" \
+    && yum -y install epel-release \
     && yum repolist \
     && yum -y install ansible \
     && yum clean all
