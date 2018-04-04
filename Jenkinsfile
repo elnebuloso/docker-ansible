@@ -151,10 +151,6 @@ def semver(version) {
 
     def versionParts = version.tokenize('.')
 
-    if (versionParts.size < 3) {
-        throw new IllegalArgumentException("Wrong version format - expected MAJOR.MINOR.PATCH - got ${version}")
-    }
-
     def major = versionParts[0].toInteger()
     def minor = versionParts[1].toInteger()
     def patch = versionParts[2].toInteger()
