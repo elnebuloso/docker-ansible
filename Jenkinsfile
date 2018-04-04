@@ -16,7 +16,7 @@ pipeline {
                     semver = semver(ansible_version)
 
                     docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
-                        image.push("${semver.get('tag_revision')}-${os}")
+                        image.push("${semver.get('tag_patch')}-${os}")
                         image.push("${semver.get('tag_minor')}-${os}")
                         image.push("${semver.get('tag_major')}-${os}")
                     }
@@ -38,7 +38,7 @@ pipeline {
                     semver = semver(ansible_version)
 
                     docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
-                        image.push("${semver.get('tag_revision')}-${os}")
+                        image.push("${semver.get('tag_patch')}-${os}")
                         image.push("${semver.get('tag_minor')}-${os}")
                         image.push("${semver.get('tag_major')}-${os}")
                     }
@@ -60,7 +60,7 @@ pipeline {
                     semver = semver(ansible_version)
 
                     docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
-                        image.push("${semver.get('tag_revision')}-${os}")
+                        image.push("${semver.get('tag_patch')}-${os}")
                         image.push("${semver.get('tag_minor')}-${os}")
                         image.push("${semver.get('tag_major')}-${os}")
                     }
@@ -82,7 +82,7 @@ pipeline {
                     semver = semver(ansible_version)
 
                     docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
-                        image.push("${semver.get('tag_revision')}-${os}")
+                        image.push("${semver.get('tag_patch')}-${os}")
                         image.push("${semver.get('tag_minor')}-${os}")
                         image.push("${semver.get('tag_major')}-${os}")
                     }
@@ -104,7 +104,7 @@ pipeline {
                     semver = semver(ansible_version)
 
                     docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
-                        image.push("${semver.get('tag_revision')}-${os}")
+                        image.push("${semver.get('tag_patch')}-${os}")
                         image.push("${semver.get('tag_minor')}-${os}")
                         image.push("${semver.get('tag_major')}-${os}")
                     }
@@ -126,7 +126,7 @@ pipeline {
                     semver = semver(ansible_version)
 
                     docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
-                        image.push("${semver.get('tag_revision')}-${os}")
+                        image.push("${semver.get('tag_patch')}-${os}")
                         image.push("${semver.get('tag_minor')}-${os}")
                         image.push("${semver.get('tag_major')}-${os}")
                     }
@@ -147,22 +147,21 @@ pipeline {
  * @return map
  */
 def semver(version) {
-    def parser = /(?<major>\d+).(?<minor>\d+).(?<revision>\d+)/
-    def match = (version =~ parser)
+    def versionParts = version.tokenize('.')
 
-    if(match.matches()) {
-        def major = match[0][1]
-        def minor = match[0][2]
-        def revision = match[0][3]
-
-        def tag_major = "${major}"
-        def tag_minor = "${major}.${minor}"
-        def tag_revision = "${major}.${minor}.${revision}"
-
-        match = null
-
-        def map = [tag_major: tag_major, tag_minor: tag_minor, tag_revision: tag_revision]
-
-        return map
+    if (versionParts.size < 3) {
+        throw new IllegalArgumentException("Wrong version format - expected MAJOR.MINOR.PATCH - got ${version}")
     }
+
+    def major = versionParts[0].toInteger()
+    def minor = versionParts[1].toInteger()
+    def patch = versionParts[2].toInteger()
+
+    def tag_major = "${major}"
+    def tag_minor = "${major}.${minor}"
+    def tag_patch = "${major}.${minor}.${patch}"
+
+    def map = [tag_major: tag_major, tag_minor: tag_minor, tag_patch: tag_patch]
+
+    return map
 }
