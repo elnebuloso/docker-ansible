@@ -8,6 +8,7 @@ case "$1" in
         sh ./app start.debian8
         sh ./app start.ubuntu14
         sh ./app start.ubuntu16
+        sh ./app start.ubuntu18
     ;;
 
     start.centos6)
@@ -52,6 +53,13 @@ case "$1" in
         docker-compose exec ubuntu16 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
     ;;
 
+    start.ubuntu18)
+        docker-compose pull
+        docker-compose up --build --remove-orphans --force-recreate -d ubuntu18
+        docker-compose exec ubuntu18 ansible --version | grep -Po "^ansible (\d+\.)+\d+" | sed 's!ansible !!g'
+        docker-compose exec ubuntu18 ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
+    ;;
+
     stop)
         docker-compose down --remove-orphans
     ;;
@@ -66,6 +74,7 @@ case "$1" in
         echo "- start.debian8   Start Debian 8 container"
         echo "- start.ubuntu14  Start Ubuntu 14.04 container"
         echo "- start.ubuntu16  Start Ubuntu 16.04 container"
+        echo "- start.ubuntu18  Start Ubuntu 18.04 container"
         echo "- stop            Stop all containers"
         echo ""
     ;;

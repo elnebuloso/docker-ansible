@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [1.9.0] - 2018-06-21
+### Changed
+- supporting ubuntu18
+
+
 ## [1.8.0] - 2017-12-12
 ### Changed
 - supporting centos6

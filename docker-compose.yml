@@ -42,3 +42,10 @@ services:
       dockerfile: Dockerfile.ubuntu16
     volumes:
       - ./demo-role:/etc/ansible/roles/demo-role
+
+  ubuntu18:
+    build:
+      context: .
+      dockerfile: Dockerfile.ubuntu18
+    volumes:
+      - ./demo-role:/etc/ansible/roles/demo-role

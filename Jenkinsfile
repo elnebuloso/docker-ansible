@@ -133,6 +133,28 @@ pipeline {
                 }
             }
         }
+
+        stage('build ubuntu18') {
+            steps {
+                script {
+                    os = "ubuntu18"
+
+                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
+
+                    image.inside() {
+                        ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
+                    }
+
+                    semver = semver(ansible_version)
+
+                    docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
+                        image.push("${semver.get('tag_patch')}-${os}")
+                        image.push("${semver.get('tag_minor')}-${os}")
+                        image.push("${semver.get('tag_major')}-${os}")
+                    }
+                }
+            }
+        }
 	}
 
 	post {
