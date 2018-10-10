@@ -6,6 +6,7 @@ RUN echo "install ansible" \
     && yum repolist \
     && yum -y install ansible \
     && mkdir -p /.ansible/tmp \
+    && chmod 777 -R /.ansible/tmp \
     && yum clean all
 
 # sleep infinity, use container as running system for testing ansible roles

@@ -11,6 +11,7 @@ RUN echo "install ansible" \
     && apt-get update \
     && apt-get install -y ansible \
     && mkdir -p /.ansible/tmp \
+    && chmod 777 -R /.ansible/tmp \
     && apt-get -y autoremove \
     && apt-get -y clean \
     && rm -rf /var/cache/apt/archives/* \
