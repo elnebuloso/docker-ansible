@@ -10,6 +10,7 @@ RUN echo "install ansible" \
     && add-apt-repository ppa:ansible/ansible \
     && apt-get update \
     && apt-get install -y ansible \
+    && mkdir -p /.ansible/tmp \
     && apt-get -y autoremove \
     && apt-get -y clean \
     && rm -rf /var/cache/apt/archives/* \

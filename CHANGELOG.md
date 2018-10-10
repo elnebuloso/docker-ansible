@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [1.10.0] - 2018-10-10
+### Changed
+- fixing ansible installations
+
+
 ## [1.9.0] - 2018-06-21
 ### Changed
 - supporting ubuntu18
