@@ -2,13 +2,10 @@ pipeline {
     agent any
 
 	stages {
-        stage('build centos6') {
+        stage('build') {
             steps {
                 script {
-                    os = "centos6"
-
-                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
-
+                    image = docker.build("elnebuloso/ansible:", "--pull --rm --no-cache -f Dockerfile .")
                     image.inside() {
                         ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
                     }
@@ -16,141 +13,10 @@ pipeline {
                     semver = semver(ansible_version)
 
                     docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
-                        image.push("${semver.get('tag_patch')}-${os}")
-                        image.push("${semver.get('tag_minor')}-${os}")
-                        image.push("${semver.get('tag_major')}-${os}")
-                    }
-                }
-            }
-        }
-
-        stage('build centos7') {
-            steps {
-                script {
-                    os = "centos7"
-
-                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
-
-                    image.inside() {
-                        ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
-                    }
-
-                    semver = semver(ansible_version)
-
-                    docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
-                        image.push("${semver.get('tag_patch')}-${os}")
-                        image.push("${semver.get('tag_minor')}-${os}")
-                        image.push("${semver.get('tag_major')}-${os}")
-                    }
-                }
-            }
-        }
-
-        stage('build debian7') {
-            steps {
-                script {
-                    os = "debian7"
-
-                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
-
-                    image.inside() {
-                        ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
-                    }
-
-                    semver = semver(ansible_version)
-
-                    docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
-                        image.push("${semver.get('tag_patch')}-${os}")
-                        image.push("${semver.get('tag_minor')}-${os}")
-                        image.push("${semver.get('tag_major')}-${os}")
-                    }
-                }
-            }
-        }
-
-        stage('build debian8') {
-            steps {
-                script {
-                    os = "debian8"
-
-                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
-
-                    image.inside() {
-                        ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
-                    }
-
-                    semver = semver(ansible_version)
-
-                    docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
-                        image.push("${semver.get('tag_patch')}-${os}")
-                        image.push("${semver.get('tag_minor')}-${os}")
-                        image.push("${semver.get('tag_major')}-${os}")
-                    }
-                }
-            }
-        }
-
-        stage('build ubuntu14') {
-            steps {
-                script {
-                    os = "ubuntu14"
-
-                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
-
-                    image.inside() {
-                        ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
-                    }
-
-                    semver = semver(ansible_version)
-
-                    docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
-                        image.push("${semver.get('tag_patch')}-${os}")
-                        image.push("${semver.get('tag_minor')}-${os}")
-                        image.push("${semver.get('tag_major')}-${os}")
-                    }
-                }
-            }
-        }
-
-        stage('build ubuntu16') {
-            steps {
-                script {
-                    os = "ubuntu16"
-
-                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
-
-                    image.inside() {
-                        ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
-                    }
-
-                    semver = semver(ansible_version)
-
-                    docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
-                        image.push("${semver.get('tag_patch')}-${os}")
-                        image.push("${semver.get('tag_minor')}-${os}")
-                        image.push("${semver.get('tag_major')}-${os}")
-                    }
-                }
-            }
-        }
-
-        stage('build ubuntu18') {
-            steps {
-                script {
-                    os = "ubuntu18"
-
-                    image = docker.build("elnebuloso/ansible:${os}", "--pull --rm --no-cache -f Dockerfile.${os} .")
-
-                    image.inside() {
-                        ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
-                    }
-
-                    semver = semver(ansible_version)
-
-                    docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
-                        image.push("${semver.get('tag_patch')}-${os}")
-                        image.push("${semver.get('tag_minor')}-${os}")
-                        image.push("${semver.get('tag_major')}-${os}")
+                        image.push("${semver.get('tag_patch')}")
+                        image.push("${semver.get('tag_minor')}")
+                        image.push("${semver.get('tag_major')}")
+                        image.push();
                     }
                 }
             }

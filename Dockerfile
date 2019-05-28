@@ -1,8 +1,7 @@
 FROM ubuntu:18.04
 MAINTAINER jeff.tunessen@gmail.com
 
-ENV TERM linux
-ENV DEBIAN_FRONTEND noninteractive
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN echo "install ansible" \
     && apt-get update \
@@ -13,14 +12,9 @@ RUN echo "install ansible" \
     && mkdir -p /.ansible/tmp \
     && chmod 777 -R /.ansible/tmp \
     && apt-get -y autoremove \
+    && apt-get -y autoclean \
     && apt-get -y clean \
-    && rm -rf /var/cache/apt/archives/* \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /var/tmp/* \
-    && rm -rf /usr/share/doc/* \
-    && rm -rf /usr/share/man/* \
-    && rm -rf /usr/share/locale/* \
     && rm -rf /tmp/*
 
-# sleep infinity, use container as running system for testing ansible roles
+# sleep infinity, use container as running system
 CMD ["tail", "-f", "/dev/null"]

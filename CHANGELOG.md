@@ -5,6 +5,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [2.0.0] - 2019-05-25
+### Changed
+- removed centos6
+- removed centos7
+- removed debian7
+- removed debian8
+- removed ubuntu14
+- removed ubuntu16
+- building only latest ansible versions based on latest ubunutu version
+
+
 ## [1.10.0] - 2018-10-10
 ### Changed
 - fixing ansible installations

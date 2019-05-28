@@ -1,51 +1,9 @@
 version: "2"
 
 services:
-  centos6:
+  ansible:
     build:
       context: .
-      dockerfile: Dockerfile.centos6
-    volumes:
-      - ./demo-role:/etc/ansible/roles/demo-role
-
-  centos7:
-    build:
-      context: .
-      dockerfile: Dockerfile.centos7
-    volumes:
-      - ./demo-role:/etc/ansible/roles/demo-role
-
-  debian7:
-    build:
-      context: .
-      dockerfile: Dockerfile.debian7
-    volumes:
-      - ./demo-role:/etc/ansible/roles/demo-role
-
-  debian8:
-    build:
-      context: .
-      dockerfile: Dockerfile.debian8
-    volumes:
-      - ./demo-role:/etc/ansible/roles/demo-role
-
-  ubuntu14:
-    build:
-      context: .
-      dockerfile: Dockerfile.ubuntu14
-    volumes:
-      - ./demo-role:/etc/ansible/roles/demo-role
-
-  ubuntu16:
-    build:
-      context: .
-      dockerfile: Dockerfile.ubuntu16
-    volumes:
-      - ./demo-role:/etc/ansible/roles/demo-role
-
-  ubuntu18:
-    build:
-      context: .
-      dockerfile: Dockerfile.ubuntu18
+      dockerfile: Dockerfile
     volumes:
       - ./demo-role:/etc/ansible/roles/demo-role
