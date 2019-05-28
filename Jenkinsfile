@@ -5,7 +5,7 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    image = docker.build("elnebuloso/ansible:", "--pull --rm --no-cache -f Dockerfile .")
+                    image = docker.build("elnebuloso/ansible", "--pull --rm --no-cache -f Dockerfile .")
                     image.inside() {
                         ansible_version = sh(script: "ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g'", returnStdout: true).trim()
                     }
