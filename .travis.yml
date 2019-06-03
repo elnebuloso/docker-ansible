@@ -1,0 +1,13 @@
+language: minimal
+
+branches:
+  only:
+    - master
+
+services:
+  - docker
+
+script:
+  - docker build --tag elnebuloso/ansible --pull --rm --no-cache --file Dockerfile .
+  - export ANSIBLE_VERSION=$(docker run elnebuloso/ansible ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g')
+  - echo ${ANSIBLE_VERSION}
