@@ -9,10 +9,12 @@ services:
 
 script:
   - docker build --tag elnebuloso/ansible --pull --rm --no-cache --file Dockerfile .
+  - export VERSION=$(docker run elnebuloso/ansible ansible --version)
   - export MAJOR=$(docker run elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f1)
   - export MINOR=$(docker run elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f2)
   - export PATCH=$(docker run elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f3)
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo ${VERSION}
   - echo ${MAJOR}
   - echo ${MINOR}
   - echo ${PATCH}
