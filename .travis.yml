@@ -8,16 +8,17 @@ services:
   - docker
 
 script:
-  - docker build --tag b90a45a2-c788-46b8-a0a1-0e70fd151757 --pull --rm --no-cache --file Dockerfile .
-  - export VERSION=$(docker run -it b90a45a2-c788-46b8-a0a1-0e70fd151757 ansible --version)
-  - export MAJOR=$(docker run -it b90a45a2-c788-46b8-a0a1-0e70fd151757 ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f1)
-  - export MINOR=$(docker run -it b90a45a2-c788-46b8-a0a1-0e70fd151757 ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f2)
-  - export PATCH=$(docker run -it b90a45a2-c788-46b8-a0a1-0e70fd151757 ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f3)
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - echo ${VERSION}
-  - echo ${MAJOR}
-  - echo ${MINOR}
-  - echo ${PATCH}
+  - grep --help
+#  - docker build --tag elnebuloso/ansible --pull --rm --no-cache --file Dockerfile .
+#  - export VERSION=$(docker run -it elnebuloso/ansible ansible --version)
+#  - export MAJOR=$(docker run -it elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f1)
+#  - export MINOR=$(docker run -it elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f2)
+#  - export PATCH=$(docker run -it elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f3)
+#  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+#  - echo ${VERSION}
+#  - echo ${MAJOR}
+#  - echo ${MINOR}
+#  - echo ${PATCH}
 #  - docker tag elnebuloso/ansible elnebuloso/ansible:${MAJOR}.${MINOR}.${PATCH}
 #  - docker tag elnebuloso/ansible elnebuloso/ansible:${MAJOR}.${MINOR}
 #  - docker tag elnebuloso/ansible elnebuloso/ansible:${MAJOR}
