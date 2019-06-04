@@ -10,17 +10,17 @@ services:
 script:
   - ansible_version=$(mktemp)
   - docker build --tag elnebuloso/ansible --pull --rm --no-cache --file Dockerfile .
-  - docker run -it elnebuloso/ansible ansible --version > "${ansible_version}"
+  - docker run -it elnebuloso/ansible ansible --version > ${ansible_version}
   - cat ${ansible_version}
-#  - export VERSION=$(docker run -it elnebuloso/ansible ansible --version)
-#  - export MAJOR=$(docker run -it elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f1)
-#  - export MINOR=$(docker run -it elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f2)
-#  - export PATCH=$(docker run -it elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f3)
+  - export TEST=$(cat ${ansible_version} | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g')
+  - export MAJOR=$(cat ${ansible_version} | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f1)
+  - export MINOR=$(cat ${ansible_version} | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f2)
+  - export PATCH=$(cat ${ansible_version} | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f3)
 #  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-#  - echo ${VERSION}
-#  - echo ${MAJOR}
-#  - echo ${MINOR}
-#  - echo ${PATCH}
+  - echo ${TEST}
+  - echo ${MAJOR}
+  - echo ${MINOR}
+  - echo ${PATCH}
 #  - docker tag elnebuloso/ansible elnebuloso/ansible:${MAJOR}.${MINOR}.${PATCH}
 #  - docker tag elnebuloso/ansible elnebuloso/ansible:${MAJOR}.${MINOR}
 #  - docker tag elnebuloso/ansible elnebuloso/ansible:${MAJOR}
