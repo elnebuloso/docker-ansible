@@ -10,7 +10,7 @@ services:
 script:
   - grep --help
   - docker build --tag elnebuloso/ansible --pull --rm --no-cache --file Dockerfile .
-  - export VERSION=$(docker run -it elnebuloso/ansible ansible --version | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g')
+  - export VERSION=$(docker run -it elnebuloso/ansible ansible --version)
 #  - export MAJOR=$(docker run -it elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f1)
 #  - export MINOR=$(docker run -it elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f2)
 #  - export PATCH=$(docker run -it elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f3)
