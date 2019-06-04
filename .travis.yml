@@ -13,10 +13,13 @@ script:
   - export MINOR=$(docker run elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f2)
   - export PATCH=$(docker run elnebuloso/ansible ansible --version | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f3)
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker tag elnebuloso/ansible elnebuloso/ansible:${MAJOR}.${MINOR}.${PATCH}
-  - docker tag elnebuloso/ansible elnebuloso/ansible:${MAJOR}.${MINOR}
-  - docker tag elnebuloso/ansible elnebuloso/ansible:${MAJOR}
-  - docker push elnebuloso/ansible:${MAJOR}.${MINOR}.${PATCH}
-  - docker push elnebuloso/ansible:${MAJOR}.${MINOR}
-  - docker push elnebuloso/ansible:${MAJOR}
-  - docker push elnebuloso/ansible
+  - echo ${MAJOR}
+  - echo ${MINOR}
+  - echo ${PATCH}
+#  - docker tag elnebuloso/ansible elnebuloso/ansible:${MAJOR}.${MINOR}.${PATCH}
+#  - docker tag elnebuloso/ansible elnebuloso/ansible:${MAJOR}.${MINOR}
+#  - docker tag elnebuloso/ansible elnebuloso/ansible:${MAJOR}
+#  - docker push elnebuloso/ansible:${MAJOR}.${MINOR}.${PATCH}
+#  - docker push elnebuloso/ansible:${MAJOR}.${MINOR}
+#  - docker push elnebuloso/ansible:${MAJOR}
+#  - docker push elnebuloso/ansible
