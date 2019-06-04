@@ -1,10 +1,14 @@
 # docker-ansible
 
-Base Ansible Container
+[![Build Status](https://travis-ci.com/elnebuloso/docker-ansible.svg?branch=master)](https://travis-ci.com/elnebuloso/docker-ansible)
+[![Docker Pulls](https://img.shields.io/docker/pulls/elnebuloso/ansible.svg)](https://hub.docker.com/r/elnebuloso/ansible)
+[![Docker Automated build](https://img.shields.io/docker/automated/elnebuloso/ansible.svg)](https://hub.docker.com/r/elnebuloso/ansible)
 
-## docker hub
+Dockerized Ansible
 
-See Supported Tags at https://hub.docker.com/r/elnebuloso/ansible/tags/
+## about
+
+Ansible is the simplest way to automate apps and IT infrastructure. Application Deployment + Configuration Management + Continuous Delivery.
 
 ## development
 
