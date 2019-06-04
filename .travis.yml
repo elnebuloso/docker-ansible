@@ -12,7 +12,7 @@ script:
 #  - docker build --tag elnebuloso/ansible --pull --rm --no-cache --file Dockerfile .
   - docker run -it elnebuloso/ansible ansible --version > ${ansible_version}
   - cat ${ansible_version}
-  - export TEST=$(cat ${ansible_version} | grep -Po '^ansible \d.\d.\d')
+  - export TEST=$(cat ${ansible_version} | grep -Po '^ansible (\d+\.)+\d+')
 #  - export TEST=$(cat ${ansible_version} | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g')
 #  - export MAJOR=$(cat ${ansible_version} | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f1)
 #  - export MINOR=$(cat ${ansible_version} | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f2)
