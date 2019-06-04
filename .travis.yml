@@ -12,14 +12,14 @@ script:
 #  - docker build --tag elnebuloso/ansible --pull --rm --no-cache --file Dockerfile .
   - docker run -it elnebuloso/ansible ansible --version > ${ansible_version}
   - cat ${ansible_version}
-  - export TEST=$(cat ${ansible_version} | grep -Po '^ansible (\d+\.)+\d+')
+  - export MAJOR=$(cat ${ansible_version} | grep -Po '^ansible (\d+\.)+\d+' | sed 's!ansible !!g' | cut -d. -f1)
 #  - export TEST=$(cat ${ansible_version} | grep -Po '^ansible (\\d+\\.)+\\d+' | sed 's!ansible !!g')
 #  - export MAJOR=$(cat ${ansible_version} | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f1)
 #  - export MINOR=$(cat ${ansible_version} | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f2)
 #  - export PATCH=$(cat ${ansible_version} | grep -e 'ansible \d.\d.\d' | sed 's!ansible !!g' | cut -d. -f3)
 #  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - echo ${TEST}
-#  - echo ${MAJOR}
+#  - echo ${TEST}
+  - echo ${MAJOR}
 #  - echo ${MINOR}
 #  - echo ${PATCH}
 #  - docker tag elnebuloso/ansible elnebuloso/ansible:${MAJOR}.${MINOR}.${PATCH}
