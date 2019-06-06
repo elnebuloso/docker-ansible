@@ -10,7 +10,7 @@ services:
 script:
   - version=$(mktemp)
   - docker build --tag elnebuloso/ansible --pull --rm --no-cache --file Dockerfile .
-  - docker run -it elnebuloso/ansible ansible --version > ${ansible_version}
+  - docker run -it elnebuloso/ansible ansible --version > ${version}
   - cat ${version}
   - export MAJOR=$(cat ${version} | grep -Po '(\d+\.\d+\.\d+)' | cut -d. -f1)
   - export MINOR=$(cat ${version} | grep -Po '(\d+\.\d+\.\d+)' | cut -d. -f2)
