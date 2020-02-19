@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/elnebuloso/docker-ansible/master/logo.png" width="100%"/>
+
 # docker-ansible
 
 ![Release](https://github.com/elnebuloso/docker-ansible/workflows/Release/badge.svg)
