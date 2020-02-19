@@ -19,7 +19,7 @@ jobs:
         run: |
           version=$(mktemp)
           docker build --tag ${TAG} --pull --rm --no-cache --file Dockerfile .
-          docker run -it ${TAG} --version > ${version}
+          docker run ${TAG} --version > ${version}
           cat ${version}
           export MAJOR=$(cat ${version} | grep -Po '^ansible (\d+\.)+\d+' | sed 's!ansible !!g' | cut -d. -f1)
           export MINOR=$(cat ${version} | grep -Po '^ansible (\d+\.)+\d+' | sed 's!ansible !!g' | cut -d. -f2)
