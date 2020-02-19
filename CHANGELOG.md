@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [2.1.0] - 2020-02-19
+### Changed
+- github actions
+- docker entrypoint added
+
+
 ## [2.0.0] - 2019-05-25
 ### Changed
 - removed centos6

@@ -16,5 +16,11 @@ RUN echo "install ansible" \
     && apt-get -y clean \
     && rm -rf /tmp/*
 
-# sleep infinity, use container as running system
-CMD ["tail", "-f", "/dev/null"]
+COPY docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
+RUN echo "configure scripts" \
+    && find /usr/local/bin -type f -name '*.sh' | while read f; do mv "$f" "${f%.sh}"; done \
+    && chmod +x /usr/local/bin/*
+
+ENTRYPOINT ["docker-entrypoint"]
+CMD ["--help"]

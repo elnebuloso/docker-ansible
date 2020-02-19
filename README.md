@@ -1,6 +1,6 @@
 # docker-ansible
 
-
+![Release](https://github.com/elnebuloso/docker-ansible/workflows/Release/badge.svg)
 [![Docker Pulls](https://img.shields.io/docker/pulls/elnebuloso/ansible.svg)](https://hub.docker.com/r/elnebuloso/ansible)
 [![GitHub](https://img.shields.io/github/license/elnebuloso/docker-ansible.svg)](https://github.com/elnebuloso/docker-ansible)
 
