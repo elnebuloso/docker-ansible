@@ -17,7 +17,7 @@ Application Deployment + Configuration Management + Continuous Delivery.
 ```
 docker-compose pull
 docker-compose up --build --remove-orphans --force-recreate -d
-docker-compose exec ansible ansible --version
-docker-compose exec ansible ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
+docker-compose run ansible --version
+docker-compose run ansible ansible-playbook -i 'localhost,' -c local /etc/ansible/roles/demo-role/tests/test.yml
 docker-compose down --remove-orphans
 ```
