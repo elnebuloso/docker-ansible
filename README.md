@@ -16,6 +16,7 @@ Dockerized Ansible
 
 - https://hub.docker.com/r/elnebuloso/ansible
 - https://hub.docker.com/r/elnebuloso/ansible/tags
+- weekly builds, 0 0 * * 0
 
 ## about
 
